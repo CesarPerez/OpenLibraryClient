@@ -1,0 +1,70 @@
+<div id="searchComponent" class="container-fluid body-content panel panel-default">      
+  <div class="form-group">  
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="input-group">
+          <input type="text" class="form-control" name="search_book" (keypress)="searchBook($event)" [(ngModel)]="bookTitle" placeholder="Introduce book title...">
+          <div class="input-group-btn">
+              <button class="btn btn-default" type="button" (click)="searchBook()"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="input-group-btn" dropdown>
+          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle col-md-6 col-sm-6 col-xs-12">
+            {{pagination}} Results per page <span class="caret"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu col-md-6 col-sm-6 col-xs-12" role="menu">
+            <li role="menuitem"><a class="dropdown-item" (click)="changePagination(10)">10</a></li>
+            <li role="menuitem"><a class="dropdown-item" (click)="changePagination(20)">20</a></li>
+            <li role="menuitem"><a class="dropdown-item" (click)="changePagination(50)">50</a></li>
+          </ul>
+      </div>  
+    </div>
+   </div> 
+</div>
+<div class="row">
+<ng-container *ngIf="!error; else errorTemplate">
+ <div *ngIf="searchDone" class="search-table">
+  <p>{{size}} Books (restricted to 100)</p>
+  <table class="table table-books">
+      <thead>
+        <th class="w-25">Cover</th>
+        <th class="w-50">Title</th>
+        <th class="w-25">Authors</th>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="books?.length > 0; else elseTemplate">
+            <tr *ngFor="let book of books | paginate: { itemsPerPage: pagination, currentPage: page }">
+              <td>
+                <ng-container *ngIf="book.cover_i; then thenTemplate; else elseTemplate"></ng-container>
+                <ng-template #thenTemplate>
+                    <img id="img-cover" (click)="openModal(template,book.cover_i)" 
+                    src="http://covers.openlibrary.org/b/id/{{book.cover_i}}-S.jpg">
+                </ng-template>
+                <ng-template #elseTemplate>
+                    <p>Not found</p>
+                </ng-template>
+              </td>
+              <td>{{book.title}}</td>
+              <td>{{book.author_name}}</td>
+            </tr>
+        </ng-container>
+          <ng-template #elseTemplate>
+              <tr><td colspan="3">No results</td></tr>
+          </ng-template>
+      </tbody>
+  </table>
+  <div>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
+</ng-container>
+<ng-template #errorTemplate>
+  <p class="container" id="error">There is a problem with OpenApi Service, check console if you want to know more details</p>
+</ng-template>
+<!-- <app-modal #modal></app-modal> -->
+<ng-template #template>
+    <ngx-loading [show]="!loadedCoverImg" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <img class="modal-img" src="{{coverModal}}" (load)="loadedCover()" (click)="modalRef.hide()">
+</ng-template>
+</div>

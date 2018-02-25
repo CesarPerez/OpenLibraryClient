@@ -1,0 +1,39 @@
+/* Overwrited elements */
+td, th {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    height: 3em;
+}
+
+/* Common elements */
+
+#searchComponent{
+    padding-bottom: 2em;
+    padding-top: 2em;
+    margin: 1em;
+}
+
+#img-cover{
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+}
+
+#error {
+    color: red;
+    text-align: center;
+}
+
+.search-table{
+    margin: 0em 3em 0em 3em;
+}
+
+.modal-img {
+    width: -moz-available;          /* For Mozzila */
+    width: -webkit-fill-available;  /* For Chrome. */
+}
+
+.table-books{
+    table-layout: fixed
+}
+
