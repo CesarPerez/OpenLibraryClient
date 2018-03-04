@@ -1,0 +1,27 @@
+.card-book {
+    padding: 1em 1em 1em 1em;
+    margin: 1em 0em 1em 0em;
+    /* border: solid 1px; */
+    background-color: white;
+    position: relative;
+    border-color: darkgrey;
+    color: #131516;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.img-cover-found{
+    cursor: pointer;
+}
+
+.img-cover{
+    max-width: 5em;
+    max-height: 5em;
+    min-height: 5em;
+}
+
+.img-cover-container{
+    float: left;
+    vertical-align: middle;
+    min-height: 5em;
+    text-align: center;
+}

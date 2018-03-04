@@ -10,13 +10,7 @@ td, th {
 #searchComponent{
     padding-bottom: 2em;
     padding-top: 2em;
-    margin: 1em;
-}
-
-#img-cover{
-    width: 3em;
-    height: 3em;
-    cursor: pointer;
+    margin: 1em 5em 1em 5em;
 }
 
 #error {

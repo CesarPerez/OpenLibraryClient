@@ -5,8 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-mobile": "ng serve --host 0.0.0.0",
+    "start:mobile": "ng serve --host 0.0.0.0",
     "build": "ng build",
+    "build:prod": "ng build --prod",
+    "build:prod-min": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

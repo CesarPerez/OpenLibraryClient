@@ -11,12 +11,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BsDropdownModule, BsModalService, ModalModule } from 'ngx-bootstrap';
 import { LoadingModule } from 'ngx-loading';
 import { DescriptionComponent } from './components/description/description.component';
+import { BookComponent } from './components/book/book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { DescriptionComponent } from './components/description/description.compo
     NgxPaginationModule,
     BsDropdownModule.forRoot(),
     ModalModule,
-    LoadingModule
+    LoadingModule,
+    BrowserAnimationsModule
   ],
   providers: [BooksService, BsModalService],
   bootstrap: [AppComponent]

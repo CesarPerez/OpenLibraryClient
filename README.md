@@ -13,7 +13,7 @@ npm start
 (to launch a local server and check the app, once started you can access typing "localhost:4200" in your browser)
 or
 ```sh
-npm run start-mobile 
+npm run start:mobile 
 ```
 (to launch a server than can be accessed by other computers/tablets/phones that share the same network, it's useful to check the responsiveness of the app, once started you can access typing "<PrivateIpServerComputer>:4200" in your computer/tablet/phone browser, as an example i'm using 192.168.1.134:4200)
 

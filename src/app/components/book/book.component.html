@@ -1,0 +1,16 @@
+<div class="container card-book">
+  <div class="col-md-9 col-sm-9 col-xs-9">
+    <h4 class="card-title">{{book.title}}</h4>
+    <p class="card-text">{{book.author_name}}</p>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-3 img-cover-container">
+      <ng-container *ngIf="book.cover_i; then thenTemplate; else elseTemplate"></ng-container>
+      <ng-template #thenTemplate>
+          <img class="img-cover img-cover-found" src="http://covers.openlibrary.org/b/id/{{book.cover_i}}-S.jpg" 
+            alt="Card image cap" (click)="onOpenModal()" >
+      </ng-template>
+      <ng-template #elseTemplate>
+        <img class="img-cover" src="assets/no-image.jpg">
+      </ng-template>
+    </div>
+</div>

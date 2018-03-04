@@ -8,21 +8,43 @@ import { Subscriber } from 'rxjs/Subscriber';
 import { Observable } from 'rxjs/Observable';
 import { ISubscription } from 'rxjs/Subscription';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
+  animations: [
+    trigger('searchDone', [
+      state('false', style({
+        marginTop: '12em',
+        transform: 'scale(1.1)'
+      })),
+      state('true',   style({
+
+      })),
+      transition('false => true', animate('100ms linear')),
+      transition('true => false', animate('100ms linear'))
+    ])
+  ]
+  
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
   private searchDone: boolean;
-  private pagination: Number;
+  public pagination: Number;
 
   public bookTitle: string;
   private books: Book[];
   private size: Number;
-  private error: Boolean;
+  public error: Boolean;
 
   private bookSubscription: ISubscription;
 
@@ -49,7 +71,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.error = false;
   }
 
-  private searchBook(event?: any) {
+  public searchBook(event?: any) {
     if (event) {
       if (event.keyCode === 13 && this.bookTitle !== '') {
         this.doSearchBook();
