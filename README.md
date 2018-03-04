@@ -19,5 +19,3 @@ npm run start:mobile
 
 Dependencies:
 ngx-bootstrap, ngx-pagination, ngx-loading
-
-I have spent around 10 hours working in this project.
